@@ -1,0 +1,67 @@
+button.custom-button {
+    --text: #fff;
+    --font-size: 28px;
+    --duration: 0.32s;
+    --move-hover: -4px;
+    --shadow: 0 4px 9px 0px rgba(20, 20, 20, 0.08);
+    --shadow-hover: 0 6px 21px -1px rgba(20, 20, 20, 0.15);
+    --font-shadow: var(--font-size);
+    line-height: var(--font-size);
+    display: block;
+    outline: none;
+    appearance: none;
+    border: none;
+    text-decoration: none;
+    font-size: var(--font-size);
+    letter-spacing: 0.5px;
+    background: var(--background);
+    color: var(--text);
+    box-shadow: var(--shadow);
+    transform: translateY(var(--y)) translateZ(0);
+    transition:
+        transform var(--duration) ease,
+        box-shadow var(--duration) ease;
+    div {
+        display: flex;
+        overflow: hidden;
+        text-shadow: 0 var(--font-shadow) 0 var(--text);
+        span {
+            display: block;
+            backface-visibility: hidden;
+            font-style: normal;
+            transition: transform var(--duration) ease;
+            transform: translateY(var(--m)) translateZ(0);
+            $i: 1;
+            @while $i < 15 {
+                &:nth-child(#{$i}) {
+                    transition-delay: math.div($i, 20) + s;
+                    // transition-delay: calc($i / 20) + s;
+                }
+                $i: $i + 1;
+            }
+        }
+    }
+    &:hover {
+        --y: var(--move-hover);
+        --shadow: var(--shadow-hover);
+        span {
+            --m: calc(var(--font-size) * -1);
+        }
+    }
+    &.reverse {
+        --font-shadow: calc(var(--font-size) * -1);
+        &:hover {
+            span {
+                --m: calc(var(--font-size));
+            }
+        }
+    }
+}
+
+button.custom-button.isFB{
+    --text: #141414 !important;
+    --move-hover: 0px !important;
+    --shadow: 0;
+    --shadow-hover: 0;
+    border: 1px solid #E6E6E6 !important;
+}

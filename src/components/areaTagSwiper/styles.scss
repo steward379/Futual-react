@@ -1,0 +1,22 @@
+.swiper-wrapper {
+  transition-timing-function: linear;
+}
+
+.swiper-slide {
+  .area {
+    border-radius: 30px;
+    background-color: white;
+    padding: 6px 12px;
+  }
+}
+
+.swiper-area-tag {
+  width: 309.132px;
+  @media (min-width: 480px) {
+    width: 364.33px;
+  }
+}
+
+.swiper-mask {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
